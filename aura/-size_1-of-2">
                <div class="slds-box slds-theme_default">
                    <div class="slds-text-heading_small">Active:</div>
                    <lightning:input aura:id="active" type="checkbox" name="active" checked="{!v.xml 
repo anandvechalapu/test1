@@ -1,0 +1,51 @@
+·       The functionalities should be displayed with appropriate screens. 
+ <aura:component>
+    <aura:attribute name="name" type="String" required="true" />
+    <aura:attribute name="number" type="String" required="true" />
+    <aura:attribute name="type" type="String" required="true" />
+    <aura:attribute name="contactName" type="String" required="true" />
+    <aura:attribute name="emailAddress" type="String" required="true" />
+    <aura:attribute name="active" type="Boolean" default="false" />
+    <aura:attribute name="dateCreated" type="Date" required="true" />
+    <aura:attribute name="lastModified" type="Date" required="true" />
+
+    <!-- To display the wholesalers list -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <!-- To display wholesaler list functionlities-->
+    <lightning:card title="Wholesalers">
+        <lightning:layout class="slds-grid slds-wrap slds-grid_pull-padded slds-m-around_medium">
+            <lightning:layoutItem class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-2">
+                <div class="slds-box slds-theme_default">
+                    <div class="slds-text-heading_small">Name:</div>
+                    <lightning:input aura:id="name" type="text" name="name" value="{!v.name}" required="true" />
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-2">
+                <div class="slds-box slds-theme_default">
+                    <div class="slds-text-heading_small">Number:</div>
+                    <lightning:input aura:id="number" type="text" name="number" value="{!v.number}" pattern="^\d+$" required="true" />
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-2">
+                <div class="slds-box slds-theme_default">
+                    <div class="slds-text-heading_small">Type:</div>
+                    <lightning:select aura:id="type" name="type" value="{!v.type}">
+                        <option value="M">Multiple</option>
+                        <option value="I">Independent</option>
+                    </lightning:select>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-2">
+                <div class="slds-box slds-theme_default">
+                    <div class="slds-text-heading_small">Contact Name:</div>
+                    <lightning:input aura:id="contactName" type="text" name="contactName" value="{!v.contactName}" required="true" />
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-2">
+                <div class="slds-box slds-theme_default">
+                    <div class="slds-text-heading_small">Email Address:</div>
+                    <lightning:input aura:id="emailAddress" type="text" name="emailAddress" value="{!v.emailAddress}" required="true" />
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="slds-p-horizontal_small slds-size_1-of-1 slds-medium
