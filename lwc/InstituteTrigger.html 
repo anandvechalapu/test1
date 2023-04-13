@@ -1,0 +1,18 @@
+<template>
+  <div>
+    <h2>Institute__c Trigger</h2>
+    <p>A trigger will be created on the Institute__c object, which will monitor any updates to the institute record. If an update is made, the trigger will check all related Student__c records to see if their Status__c was created more than 30 days ago. If the status was created more than 30 days ago, the Student__c record will be updated to Inactive.</p>
+  </div>
+</template>
+
+<script>
+  import { LightningElement } from 'lwc';
+
+  export default class InstituteTrigger extends LightningElement {
+    //Trigger code will go here
+  }
+</script>
+
+<style>
+
+</style>
