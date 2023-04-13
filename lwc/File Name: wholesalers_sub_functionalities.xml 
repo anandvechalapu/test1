@@ -1,0 +1,26 @@
+Ability to click on sub functionalities of wholesalers like Edit,View and Download.         Ability to download the branches as format of .csv file.         User should be able to find the sub functionalities when he clicks user’s functionality.         User should be able to access the sub functionalities like edit, view and download.         If user has access then user should be able to access this page.         If user didn’t have access then redirect to login page.         User name should not be empty; username should be unique.         Number should not be empty and should be number "/^\d+$/" and should be unique.         Clicking on Download Data will allow User to view the results in Excel format.         User have the option of filtering the data using the drop down menu.
+
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage">
+            <property name="wholesalers" type="String" default="Wholesalers" label="Wholesalers" required="true" />
+        </targetConfig>
+    </targetConfigs>
+    <masterDefinition>
+        <component>
+            <description>Wholesalers</description>
+            <implements>
+                <interface>force:hasRecordId</interface>
+            </implements>
+            <isExposed>true</isExposed>
+        </component>
+    </masterDefinition>
+</LightningComponentBundle>
