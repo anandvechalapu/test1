@@ -1,0 +1,56 @@
+·       User should be able to filter the data using the drop down menu.·       User should be able to edit, view or download the wholesalers.·       User should be able to view the results in Excel format.·       User should be able to access the sub functionalities like edit, view and download.·       User should be able to access the page if he has access.·       User should be redirected to login page if he doesn’t have access.·       User name should not be empty; username should be unique.·       Number should not be empty and should be number "/^\d+$/" and should be unique.
+
+<html>
+<head>
+<title>Wholesalers</title>
+<script>
+    // Function to check user access 
+    function checkUserAccess(){
+        if (userName == '' || userName == null) {
+            alert("User name should not be empty");
+            return false;
+        }
+        if(userName.match("^\d+$") && userName.length > 0){
+            alert("User name should be unique");
+            return false;
+        }
+        // Check if user has access
+        if (userHasAccess){
+            // Redirect to wholesalers page
+            window.location.assign("wholesalers.html");
+        }
+        else{
+            // Redirect to login page
+            window.location.assign("login.html");
+        }
+    }
+</script>
+</head>
+<body>
+    <div>
+    <h2>Wholesalers</h2>
+    <!-- Form to enter user details -->
+    <form action="wholesalers.html" method="post">
+        <label> User Name: </label><input type="text" name="username" required><br><br>
+        <label> Number: </label><input type="number" name="number" required><br><br>
+        <label> Type: </label><select name="type">
+            <option value="I">Independent</option>
+            <option value="M">Multiple</option>
+        </select><br><br>
+        <label> Contact Name: </label><input type="text" name="contactName"><br><br>
+        <label> Email Address: </label><input type="email" name="email"><br><br>
+        <label> Active: </label><input type="checkbox" name="active"><br><br>
+        <input type="submit" name="submit" value="Submit">
+        <input type="reset" name="reset" value="Reset">
+    </form>
+    <!-- Button to download data as excel format -->
+    <input type="button" value="Download Data" onclick="downloadData()">
+    </div>
+    <script>
+        // Function to download data as excel format
+        function downloadData(){
+            // Add your code to download data as excel format
+        }
+    </script>
+</body>
+</html>
