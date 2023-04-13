@@ -1,0 +1,49 @@
+·       User name should not be empty; username should be unique. ·       Number should not be empty and should be number "/^\d+$/" and should be unique. ·       User should able to download the data in Excel format. ·       Type should be either I- Independent or M- Multiple. ·       Submit and Reset buttons should be enabled. 
+    
+<aura:component description="Wholesalers Menu Item">
+    <aura:attribute name="name" type="String" required="true" description="Name of Wholesaler" />
+    <aura:attribute name="number" type="String" required="true" description="Number of Wholesaler" />
+    <aura:attribute name="type" type="String" required="true" description="Type of Wholesaler" />
+    <aura:attribute name="contactName" type="String" description="Contact Person Name" />
+    <aura:attribute name="email" type="String" description="Contact Person Email" />
+    <aura:attribute name="active" type="Boolean" default="false" description="Wholesaler is active or not" />
+    <aura:attribute name="dateCreated" type="DateTime" description="Creation Date" />
+    <aura:attribute name="lastModified" type="DateTime" description="Last Modified Date" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+   
+    <lightning:card>
+        <lightning:layout>
+            <lightning:layoutItem>
+                <lightning:input type="text" label="Name" name="name" value="{!v.name}" required="true"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem>
+                <lightning:input type="text" label="Number" name="number" value="{!v.number}" pattern="^\d+$" required="true"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem>
+                <lightning:select label="Type" name="type" value="{!v.type}" required="true">
+                    <option value="I">I- Independent</option>
+                    <option value="M">M- Multiple</option>
+                </lightning:select>
+            </lightning:layoutItem>
+            <lightning:layoutItem>
+                <lightning:input type="text" label="Contact Name" name="contactName" value="{!v.contactName}" />
+            </lightning:layoutItem>
+            <lightning:layoutItem>
+                <lightning:input type="text" label="Email" name="email" value="{!v.email}" />
+            </lightning:layoutItem>
+            <lightning:layoutItem>
+                <lightning:input type="checkbox" label="Active" name="active" checked="{!v.active}" />
+            </lightning:layoutItem>
+            <lightning:layoutItem>
+                <lightning:input type="date" label="Date Created" name="dateCreated" value="{!v.dateCreated}" />
+            </lightning:layoutItem>
+            <lightning:layoutItem>
+                <lightning:input type="date" label="Last Modified" name="lastModified" value="{!v.lastModified}" />
+            </lightning:layoutItem>
+        </lightning:layout>
+        <lightning:button label="Submit" onclick="{!c.handleSubmit}" />
+        <lightning:button label="Reset" onclick="{!c.handleReset}" />
+        <lightning:button label="Download Data" onclick="{!c.handleDownloadData}" />
+    </lightning:card>
+</aura:component>
