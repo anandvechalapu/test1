@@ -1,0 +1,115 @@
+·       User should be directed to login page if access is denied.·       Validations should be checked for name and number.·       User should be able to download the data in excel format.·       User should be able to select the type from drop down menu.·       User should be able to add/edit the wholesalers. 
+
+/*Wholesalers css*/
+
+.wholesalers-menu {
+    font-family: sans-serif;
+    font-size: 14px;
+    color: #3D3D3D;
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #F1F1F1;
+    border-radius: 5px;
+    width: 500px;
+    position: relative;
+}
+
+.wholesalers-menu-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #3D3D3D;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.wholesalers-menu-item {
+    text-align: center;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #ffffff;
+    border-radius: 3px;
+    width: 200px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    position: relative;
+    transition: all 0.2s ease-in-out;
+}
+
+.wholesalers-menu-item:hover {
+    background-color: #F1F1F1;
+    color: #3D3D3D;
+    cursor: pointer;
+}
+
+.wholesalers-menu-item-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #3D3D3D;
+}
+
+.wholesalers-menu-item-icon {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #3D3D3D;
+    transition: all 0.2s ease-in-out;
+}
+
+.wholesalers-menu-item:hover .wholesalers-menu-item-icon {
+    color: #000000;
+}
+
+.wholesalers-menu-footer {
+    font-size: 14px;
+    color: #3D3D3D;
+    text-align: center;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.wholesalers-menu-download-btn {
+    font-size: 16px;
+    font-weight: 600;
+    color: #3D3D3D;
+    text-align: center;
+    margin-top: 15px;
+    width: 100%;
+    background-color: #F1F1F1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.wholesalers-menu-download-btn:hover {
+    background-color: #ffffff;
+    color: #3D3D3D;
+    cursor: pointer;
+}
+
+.wholesalers-menu-input {
+    font-size: 14px;
+    font-weight: 600;
+    color: #3D3D3D;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    margin: 10px 0;
+    border: 1px solid #F1F1F1;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.wholesalers-menu-submit-btn,
+.wholesalers-menu-reset-btn {
+    font-size: 16px;
+    font-weight: 600;
+    color: #3D3D3D;
+    text-align: center;
+    margin-top: 15px;
+    width: 100%;
+    background-color: #F1F1F1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.wholesalers-menu-submit-btn:hover,
+.wholesalers-menu-reset-btn:hover {
+    background-color: #ffffff;
+    color: #3D3D3D
