@@ -1,0 +1,14 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute name="username" type="String" />
+    <aura:attribute name="password" type="String" />
+ 
+    <div class="slds-size--1-of-1">
+        <lightning:card title="Sacral.ai Login">
+            <div class="slds-p-horizontal--small">
+                <lightning:input label="Username" name="usernameInput" value="{!v.username}" />
+                <lightning:input label="Password" name="passwordInput" type="password" value="{!v.password}" />
+            </div>
+            <lightning:button label="Login" variant="brand" onclick="{!c.submit}" />
+        </lightning:card>
+    </div>
+</aura:component>

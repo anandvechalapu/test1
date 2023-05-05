@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuraDefinition xmlns="http://auraframework.org/schema/aura">
+    <description>Aura component for logging in to sacral.ai Home page</description>
+    <masterDefinition>
+        <description>Log in to sacral.ai Home page</description>
+        <component>
+            <name>sacralai:login</name>
+            <controller>
+                <![CDATA[
+                    ({
+                        login: function(cmp, event, helper) {
+                            //validate user credentials
+                            var username = cmp.get("v.username");
+                            var password = cmp.get("v.password");
+
+                            //call server to authenticate
+                            var action = cmp.get("c.login");
+                            action.setParams({
+                                "username": username,
+                                "password": password
+                            });
+
+                            action.setCallback(this, function(response) {
+                                var state = response.getState();
+                                if (state === "SUCCESS") {
+                                    //on successful login, navigate to Home page
+                                    var navEvt = $A.get("e.force:navigateToURL");
+                                    navEvt.setParams({
+                                        "url": "/home"
+                                    });
+                                    navEvt.fire();
+                                }
+                            });
+                            $A.enqueueAction(action);
+                        }
+                    })
+                ]]>
+            </controller>
+            <helper>
+                <![CDATA[
+                    ({
+                    })
+                ]]>
+            </helper>
+            <model>
+                <![CDATA[
+                    ({
+                        username: '',
+                        password: ''
+                    })
+                ]]>
+            </model>
+            <renderer>
+                <![CDATA[
+                    ({
+                        render: function(cmp, helper) {
+                            var ret = this.superRender();
+                            //add login form
+                            var username = cmp.find("username");
+                            var password = cmp.find("password");
+                            var loginBtn = cmp.find("loginBtn");
+                            $A.createComponent(
+                                "lightning:input",
+                                {
+                                    "aura:id": "username",
+                                    "label": "Username",
+                                    "type": "text",
+                                    "value": cmp.get("v.username")
+                                },
+                                function(newInput, status, errorMessage){
+                                    if (status === "SUCCESS") {
+                                        var body = cmp.get("v.body");
+                                        body.push(newInput);
+                                        cmp.set("v.body", body);
+                                    }
+                                    else if (status === "INCOMPLETE") {
+                                        console.log("No response from server or client is offline.")
+                                    }
+                                    else if (status === "ERROR") {
+                                        console.log("Error: " + errorMessage);
+                                    }
+                                }
+                            );
+                            $A.createComponent(
+                                "lightning:input",
+                                {
+                                    "aura:id": "password",
+                                    "label": "Password",
+                                    "type": "password",
+                                    "value": cmp.get("v.password")
+                                },
+                                function(newInput, status, errorMessage){
+                                    if (status === "SUCCESS") {
+                                        var body = cmp.get("v.body");
+                                        body.push(newInput);
+                                        cmp.set("v.body", body);
+                                    }
+                                    else if (status === "INCOMPLETE") {
+                                        console.log("No response from server or client is offline.")
+                                    }
+                                    else if (status === "ERROR") {
+                                        console.log("Error: " + errorMessage);
+                                    }
+                                }
+                            );
+                            $A.createComponent(
+                                "lightning:button",
+                                {
+                                    "aura:id": "loginBtn",
+                                    "label": "Login",
+                                    "onclick": cmp.getReference("c.login")
+                                },
+                                function(newButton, status, errorMessage){
